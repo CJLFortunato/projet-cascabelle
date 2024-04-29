@@ -1,3 +1,96 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "airbnb-base"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "commonjs": true,
+    "jest": true
+    },
+  "rules": {
+    // Disable rule because not compatible with the immer library
+    "no-param-reassign": ["error", { "props": false }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
+    "linebreak-style": "off",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "comma-dangle": [
+          "warn",
+          {
+              "arrays": "always-multiline",
+              "objects": "always-multiline",
+              "imports": "always-multiline",
+              "exports": "always-multiline",
+              "functions": "always-multiline"
+          }
+      ],
+    "import/order": [
+      "warn",
+      {
+          "alphabetize": {
+              "caseInsensitive": true,
+              "order": "asc"
+          },
+          "newlines-between": "always",
+          "groups": [
+              "builtin",
+              "external",
+              "internal",
+              ["parent", "sibling", "index"]
+          ],
+          "pathGroups": [
+              {
+                  "pattern": "next*",
+                  "group": "builtin"
+              },
+              {
+                "pattern": "react*",
+                "group": "builtin"
+            },
+              {
+                  "pattern": "prop-types",
+                  "group": "builtin"
+              },
+              {
+                "pattern": "app/**",
+                "group": "internal"
+              },
+              {
+                  "pattern": "backEnd/**",
+                  "group": "internal"
+              },
+              {
+                  "pattern": "frontEnd/**",
+                  "group": "internal"
+              }
+          ],
+          "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+  ],
+  "max-len": [2, {"code": 100, "ignoreComments": true}],
+  "semi": [2, "always"],
+  "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/test.{ts,tsx}", // repos with a single test file
+          "**/test-*.{ts,tsx}", // repos with multiple top-level test files
+          "**/*{.,_}{test,spec}.{ts,tsx}", // tests where the extension or filename suffix denotes that it is a test
+          "**/jest.config.ts", // jest config
+          "**/jest.setup.ts",
+          "**/mocks/**/*.{ts,tsx}", // jest setup
+          "**/setupTests.ts",
+          "**/vite.config.ts"
+        ],
+        "optionalDependencies": false
+      }
+    ],
+    "import/extensions": [0, "never"]
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+}
 }
