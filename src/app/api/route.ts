@@ -1,6 +1,4 @@
-async function GET(request: Request) {
-  console.log(request);
-  return Response.json({ message: 'This is a placeholder' });
+// eslint-disable-next-line import/prefer-default-export
+export async function GET() {
+  return new Response('This is a new API route');
 }
-
-export default GET;
