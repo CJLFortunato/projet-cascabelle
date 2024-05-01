@@ -1,12 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
-type ResponseData = {
-  message: string
+async function GET(request: Request) {
+  console.log(request);
+  return Response.json({ message: 'This is a placeholder' });
 }
 
-export default async function GET(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>,
-) {
-  res.status(200).json({ message: 'This is a placeholder' });
-}
+export default GET;
