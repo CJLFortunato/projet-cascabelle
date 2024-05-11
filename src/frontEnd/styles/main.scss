@@ -1,3 +1,19 @@
+ * {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+header {
+    background-color: slategrey;
+    color: white;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .5%;
+}
+
 h1 {
     color: deeppink;
 }
