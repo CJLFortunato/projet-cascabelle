@@ -23,3 +23,26 @@ main {
     flex-direction: column;
     align-items: center;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 2rem 0;
+    // border: 1px solid seagreen;
+    width: 80%;
+
+    select {
+        width: 100%;
+        margin: 1rem 0;
+        height: 2rem;
+    }
+    input {
+        width: 100%;
+        height: 2rem;
+    }
+    input[type="submit"] {
+        width: 30%;
+        margin: 1rem auto;
+    }
+}
