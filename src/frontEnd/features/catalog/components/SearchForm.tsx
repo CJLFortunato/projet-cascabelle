@@ -2,16 +2,19 @@
 
 import React, { useState } from 'react';
 
-function SearchForm() {
+import { SearchFormProps } from './propTypes';
+
+function SearchForm(props: SearchFormProps) {
+  const { types } = props;
   const [displayAdvanced, setDisplayAdvanced] = useState<boolean>(false);
-  React.useEffect(() => {
-    console.log(displayAdvanced);
-  }, [displayAdvanced]);
-  console.log('render');
+  console.log(types);
   return (
     <form>
       <select name="type" id="type">
-        <option value="test">test</option>
+        <option value="">Choisissez un type de document</option>
+        {
+          types.map((type) => <option value={type.id} key={type.id}>{type.label}</option>)
+        }
       </select>
       <label htmlFor="title">Titre</label>
       <input type="text" id="title" />
