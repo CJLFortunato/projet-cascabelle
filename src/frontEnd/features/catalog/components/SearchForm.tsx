@@ -27,6 +27,23 @@ function SearchForm(props: SearchFormProps) {
           <section>
             <label htmlFor="author">Auteur</label>
             <input type="text" id="author" />
+            <p>Année de publication</p>
+            <label htmlFor="from_date">De</label>
+            <input type="text" name="from_date" id="from_date" />
+            <label htmlFor="to_date">A</label>
+            <input type="text" name="to_date" id="to_date" />
+            <fieldset>
+              <label>
+                <input type="checkbox" name="subtitles" id="subtitles" />
+                {' '}
+                Sous-titres
+              </label>
+              <label>
+                <input type="checkbox" name="audiodescription" id="audiodescription" />
+                {' '}
+                Audiodescription
+              </label>
+            </fieldset>
           </section>
         )
       }
