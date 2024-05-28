@@ -6,6 +6,7 @@ import ApiTypes from 'frontEnd/features/types/api';
 
 async function PageCatalog() {
   const types = await ApiTypes.fetchTypes();
+
   return (
     <main>
     <h1>Catalogue</h1>

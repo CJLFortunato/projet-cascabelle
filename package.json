@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sass": "npx sass --watch src/frontend/styles/main.scss src/app/(front)/style.css",
+    "sass": "npx sass --watch src/frontend/styles/main.scss src/app/style.css",
     "work": "concurrently \"npm run dev\" \"npm run sass\"",
     "test": "jest"
   },
