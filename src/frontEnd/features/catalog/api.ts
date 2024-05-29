@@ -3,4 +3,9 @@ export default class ApiCatalog {
     console.log(formData);
     return '';
   }
+
+  static async searchCatalog(params: any) {
+    console.log(params);
+    return ['test'];
+  }
 }
