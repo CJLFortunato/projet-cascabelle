@@ -4,10 +4,10 @@ import SearchResults from 'frontEnd/features/catalog/components/SearchResults';
 
 function SearchResultsPage() {
   return (
-    <div>
+    <main>
         <h1>Résultats de la recherche</h1>
         <SearchResults />
-    </div>
+    </main>
   );
 }
 

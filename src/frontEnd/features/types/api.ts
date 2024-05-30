@@ -1,4 +1,4 @@
-import TypeControllers from 'backEnd/controllers/typeController';
+import TypeControllers from 'backEnd/controllers/type.controller';
 
 export default class ApiTypes {
   static async fetchTypes() {

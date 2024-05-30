@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react';
 
 import { useSearchParams } from 'next/navigation';
 
+import SearchResult from './SearchResult';
 import ApiCatalog from '../api';
 
 function SearchResults() {
   const searchParams = useSearchParams();
-  const title = searchParams.get('title');
-  const type = searchParams.get('type');
-  const author = searchParams.get('author');
+  const title = searchParams.get('title') || '';
+  const type = searchParams.get('type') || '';
+  const author = searchParams.get('author') || '';
   const [searchResults, setSearchResults] = useState<any[]>([]);
 
   useEffect(() => {
@@ -20,11 +21,11 @@ function SearchResults() {
     };
     callApi();
   }, [setSearchResults, title, type, author]);
-  console.log(searchParams);
+
   return (
-    <div>
-      {searchResults.map((res) => <h3 key={res}>{res}</h3>)}
-    </div>
+    <article className="search-result-ctn">
+      {searchResults.map((res) => <SearchResult key={res} result={res} />)}
+    </article>
   );
 }
 

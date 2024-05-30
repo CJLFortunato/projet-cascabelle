@@ -1,3 +1,5 @@
+@import 'searchResult';
+
  * {
     margin : 0;
     padding: 0;
@@ -16,6 +18,8 @@ header {
 
 h1 {
     color: deeppink;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 main {

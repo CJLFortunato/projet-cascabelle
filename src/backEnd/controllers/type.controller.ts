@@ -1,4 +1,4 @@
-import TypeQueries from 'backEnd/queries/typeQueries';
+import TypeQueries from 'backEnd/queries/type.queries';
 import { Type } from 'common/typeDefs/type';
 
 export default class TypeControllers {
