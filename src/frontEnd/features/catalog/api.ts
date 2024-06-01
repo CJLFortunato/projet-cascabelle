@@ -1,5 +1,5 @@
 import CatalogControllers from 'backEnd/controllers/catalog.controller';
-import CatalogSearchParams from 'common/typeDefs/catalog';
+import { CatalogSearchParams, DocumentRedux } from 'common/typeDefs/catalog';
 
 export default class ApiCatalog {
   static async fetchCatalog(formData: any) {
@@ -7,7 +7,7 @@ export default class ApiCatalog {
     return '';
   }
 
-  static async searchCatalog(searchParams: CatalogSearchParams) {
+  static async searchCatalog(searchParams: CatalogSearchParams): Promise<DocumentRedux[]> {
     const res = await CatalogControllers.searchCatalogController(searchParams);
     return res;
   }
