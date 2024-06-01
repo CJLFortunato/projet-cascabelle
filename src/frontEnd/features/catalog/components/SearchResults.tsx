@@ -1,30 +1,20 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
-
-import { useSearchParams } from 'next/navigation';
+import React from 'react';
 
 import SearchResult from './SearchResult';
 import ApiCatalog from '../api';
 
-function SearchResults() {
-  const searchParams = useSearchParams();
-  const title = searchParams.get('title') || '';
-  const type = searchParams.get('type') || '';
-  const author = searchParams.get('author') || '';
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+async function SearchResults(props: any) {
+  const { searchParams } = props;
+  // const title = searchParams.get('title') || '';
+  // const type = searchParams.get('type') || '';
+  // const author = searchParams.get('author') || '';
+  const { title, type, author } = searchParams;
 
-  useEffect(() => {
-    const callApi = async () => {
-      const results = await ApiCatalog.searchCatalog({ title, type, author });
-      setSearchResults(results);
-    };
-    callApi();
-  }, [setSearchResults, title, type, author]);
+  const results = await ApiCatalog.searchCatalog({ title, type, author });
 
   return (
     <article className="search-result-ctn">
-      {searchResults.map((res) => <SearchResult key={res} result={res} />)}
+      {results.map((res) => <SearchResult key={res} result={res} />)}
     </article>
   );
 }
