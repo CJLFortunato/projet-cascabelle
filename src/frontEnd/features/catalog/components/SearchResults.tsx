@@ -5,9 +5,7 @@ import ApiCatalog from '../api';
 
 async function SearchResults(props: any) {
   const { searchParams } = props;
-  // const title = searchParams.get('title') || '';
-  // const type = searchParams.get('type') || '';
-  // const author = searchParams.get('author') || '';
+
   const { title, type, author } = searchParams;
 
   const results = await ApiCatalog.searchCatalog({ title, type, author });

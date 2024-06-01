@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { VercelPoolClient, db } from '@vercel/postgres';
 
@@ -8,6 +9,7 @@ import {
   eventTypes,
   supports,
   subscriptions,
+  documents,
 } from './seedData';
 
 async function seedTypeTable(client: VercelPoolClient) {
@@ -142,16 +144,77 @@ async function seedEventTypeTable(client: VercelPoolClient) {
   }
 }
 
+async function seedDocumentTable(client: VercelPoolClient) {
+  try {
+    const insertedDocuments = await Promise.all(
+      documents.map(
+        (document) => client.sql`
+        INSERT INTO document (
+          title,
+          author,
+          performer,
+          actors,
+          director,
+          publisher,
+          publication,
+          publishing_date,
+          isxn,
+          blurb,
+          cover,
+          country,
+          notes,
+          rating,
+          subtitles,
+          audiodescription,
+          fk_id_support,
+          fk_id_type
+        )
+        VALUES (
+          ${document.title},
+          ${document.author},
+          ${document.performer},
+          ${document.actors},
+          ${document.director},
+          ${document.publisher},
+          ${document.publication},
+          ${document.publishing_date},
+          ${document.isxn},
+          ${document.blurb},
+          ${document.cover},
+          ${document.country},
+          ${document.notes},
+          ${document.rating},
+          ${document.subtitles},
+          ${document.audiodescription},
+          ${document.supportId},
+          ${document.typeId}
+        )
+      `,
+      ),
+    );
+
+    console.log(`Seeded ${insertedDocuments.length} Types`);
+
+    return {
+      documents: insertedDocuments,
+    };
+  } catch (error) {
+    console.error('Error seeding document:', error);
+    throw error;
+  }
+}
+
 async function main() {
   try {
     const client = await db.connect();
 
-    await seedTypeTable(client);
-    await seedGenreTable(client);
-    await seedRoleTable(client);
-    await seedSupportTable(client);
-    await seedSubscriptionTable(client);
-    await seedEventTypeTable(client);
+    // await seedTypeTable(client);
+    // await seedGenreTable(client);
+    // await seedRoleTable(client);
+    // await seedSupportTable(client);
+    // await seedSubscriptionTable(client);
+    // await seedEventTypeTable(client);
+    await seedDocumentTable(client);
   } catch (error) {
     console.error(
       'An error occurred while attempting to seed the database:',
